@@ -156,7 +156,7 @@ class Solution {
         }
 };
 
-// Более оптимальное решение: 
+
 // QuickSelect(O (n) в среднем) 
 class Solution {
     public:
@@ -208,6 +208,16 @@ class Solution {
             return i;
         }   
 };
+
+
+class Solution {
+    int findKthLargest(vector<int>& nums, int k) {
+        nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater<int>());
+
+        return nums[k - 1];
+    }
+};
+
 
 
 
@@ -319,39 +329,4 @@ class Solution {
                 }
             }
         }
-};
-
-// Quick Select
-
-class Solution {
-    private:
-        int partition(vector<int>& nums, int left, int right) {
-            int pivot = nums[right];
-            int i = left;
-
-            for(int j = left; j < right; j++) {
-                if (nums[j] >= pivot) {
-                    swap(nums[i], nums[j]);
-                    i++;
-                }
-            }
-            swap(nums[i], nums[right]);
-            return i;
-        }
-
-    public:
-        int findKthLargest(vector<int>& nums, int k) {
-            int left = 0, right = nums.size() - 1;
-
-            while(true) {
-                int pos = partition(nums, left, right);
-
-                if (pos == k - 1) 
-                    return nums[pos];
-                else if (pos > k - 1)
-                    right = pos - 1;
-                else 
-                    left = pos + 1;
-            } 
-        } 
 };
