@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+// Сортировка выбором
 class SelectionSort {
     private:
         void swap(int& a, int& b) {
@@ -30,9 +32,6 @@ class SelectionSort {
         }
 };
 
-
-
-   
 
 // Selection Sort делает ровно n-1 обменов
 
@@ -64,98 +63,8 @@ class Solution {
         }
 };
 
-class Solution {
-    public:
-        void moveZeroes(vector<int>& nums) {
-            int nonZeroPos = 0;
 
-            for(int i = 0; i < nums.size(); i++) {
-                if (nums[i] != 0) 
-                    swap(nums[nonZeroPos++], nums[i]);
-            }
-        }
-};
-
-
-class Solution {
-    public:
-        void moveZeroes(vector<int>& nums) {
-            int nonZeroPos = 0;
-
-            for(int i = 0; i < nums.size(); i++) {
-                if (nums[i] != 0)
-                    swap(nums[nonZeroPos++], nums[i]);
-            }
-        }
-};
-
-
-// 
-
-class Solution {
-    public: 
-        int findKthLargest(vector<int>& nums, int k) {
-            // Можно решить модифицированным selection sort
-
-            for(int i = 0; i < k; i++) {
-                int maxIndex = i;
-
-                for(int j = i + 1; j < nums.size(); j++) {
-                    if (nums[j] > nums[maxIndex]) {
-                        maxIndex = j;
-                    }
-                }
-                swap(nums[i], nums[maxIndex]);
-            }
-            return nums[k-1];
-        }
-};
-
-
-class Solution {
-    public:
-        int findKLargest(vector<int>& nums, int k) {
-            for(int i = 0; i < k; i++) {
-                int max_index = i;
-
-                for(int j = i + 1; j < nums.size(); j++) {
-                    
-                    if (nums[j] > nums[max_index])
-                        max_index  = j;
-                }
-
-                swap(nums[i], nums[max_index]);
-            }
-
-            return nums[k - 1];
-        }
-};
-
-
-
-
-
-
-// Не оптимальное решение т.к. Время: O(n * k)
-//                             Память: O(1)
-class Solution {
-    public: 
-        int findKLargest(vector<int>& nums, int k) {
-            for(int i = 0; i < k; i++) {
-                int max_index = i;
-
-                for(int j = i + 1; j < nums.size(); j++) {
-                    if (nums[j] > nums[max_index])
-                        max_index = j;
-                }
-
-                swap(nums[i], nums[max_index]);
-            }
-
-            return nums[k - 1];
-        }
-};
-
+//
 
 // QuickSelect(O (n) в среднем) 
 class Solution {
@@ -330,3 +239,4 @@ class Solution {
             }
         }
 };
+
